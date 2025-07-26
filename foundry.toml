@@ -1,0 +1,30 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+evm_version = "shanghai"  # 使用稳定的 EVM 版本
+solc_version = "0.8.13"
+
+# Fork configuration for testing with real network data
+# 类似 Anchor 的 [[test.validator.clone]] 功能
+[rpc_endpoints]
+mainnet = "https://eth-mainnet.alchemyapi.io/v2/YOUR_API_KEY"
+sepolia = "https://eth-sepolia.g.alchemy.com/v2/YOUR_API_KEY"
+polygon = "https://polygon-mainnet.g.alchemy.com/v2/YOUR_API_KEY"
+
+# Fork from mainnet at latest block
+[profile.default.fork]
+url = "${RPC_URL}"  # 可以通过环境变量设置
+# block_number = 18000000  # 可选：指定特定区块号
+
+# Fork from mainnet for testing profile
+[profile.fork-test]
+src = "src"
+out = "out"
+libs = ["lib"]
+evm_version = "shanghai"
+solc_version = "0.8.13"
+fork_url = "https://eth-mainnet.alchemyapi.io/v2/YOUR_API_KEY"
+# fork_block_number = 18000000  # 可选：指定区块号
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
